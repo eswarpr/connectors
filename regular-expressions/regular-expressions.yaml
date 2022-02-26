@@ -27,7 +27,7 @@ paths:
       responses:
         default:
           description: default
-          schema: {type: boolean}
+          schema: {type: string}
       summary: Test
       description: Tests if the given pattern is a match for the text
       operationId: Test

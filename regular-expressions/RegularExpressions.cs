@@ -117,7 +117,7 @@ public class Script : ScriptBase
 
         return new HttpResponseMessage(HttpStatusCode.OK)
         {
-            Content = new StringContent(result.ToString())
+            Content = new StringContent(result.ToString().ToLower())
         };
     }
 

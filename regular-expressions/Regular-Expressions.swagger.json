@@ -1,0 +1,234 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Regular Expressions",
+    "description": "A collection of actions that will allow use of regular expressions (RegEx) with text",
+    "version": "1.0"
+  },
+  "host": "connectors.eswarprakash.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/Match": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "$ref": "#/definitions/RegexMatchResponse"
+            }
+          }
+        },
+        "summary": "Match",
+        "description": "Attempts to match the given text and pattern and returns all matches",
+        "operationId": "Match",
+        "x-ms-visibility": "advanced",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegexRequest"
+            }
+          }
+        ]
+      }
+    },
+    "/Test": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Test",
+        "description": "Tests if the given pattern is a match for the text",
+        "operationId": "Test",
+        "x-ms-visibility": "advanced",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegexRequest"
+            }
+          }
+        ]
+      }
+    },
+    "/Split": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Split",
+        "description": "Splits the text using the specified pattern",
+        "operationId": "Split",
+        "x-ms-visibility": "advanced",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegexRequest"
+            }
+          }
+        ]
+      }
+    },
+    "/Replace": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Replace",
+        "description": "Replaces all matches for the pattern in the text with the given substitutions or plain text",
+        "operationId": "Replace",
+        "x-ms-visibility": "advanced",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegexReplaceRequest"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "RegexRequest": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text to match",
+          "title": "Text"
+        },
+        "pattern": {
+          "type": "string",
+          "description": "The pattern to match in the text",
+          "title": "Pattern"
+        }
+      },
+      "required": [
+        "text",
+        "pattern"
+      ]
+    },
+    "RegexReplaceRequest": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text to match",
+          "title": "Text"
+        },
+        "pattern": {
+          "type": "string",
+          "description": "The pattern to match in the text",
+          "title": "Pattern"
+        },
+        "replace": {
+          "type": "string",
+          "description": "The text or pattern to replace the matched text with",
+          "title": "Replace with"
+        }
+      },
+      "required": [
+        "text",
+        "pattern",
+        "replace"
+      ]
+    },
+    "RegexMatchResponse": {
+      "type": "object",
+      "properties": {
+        "matches": {
+          "type": "array",
+          "description": "The collection of matches found in the text",
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "number",
+                "description": "The starting position of the match"
+              },
+              "length": {
+                "type": "number",
+                "description": "The length of the match in the text"
+              },
+              "success": {
+                "type": "boolean",
+                "description": "Indicates if the match was a success"
+              },
+              "value": {
+                "type": "string",
+                "description": "The value captured in the match"
+              },
+              "groups": {
+                "type": "array",
+                "description": "The collection of groups matched in the text",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "number",
+                      "description": "The starting position of the match"
+                    },
+                    "length": {
+                      "type": "number",
+                      "description": "The length of the match in the text"
+                    },
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates if the match was a success"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the group"
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value captured in the group"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": []
+}
