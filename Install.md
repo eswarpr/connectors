@@ -1,6 +1,6 @@
 # Installing the connectors
 
-In order to install these connectors to your environment, you will need sufficient permissions to create and publish custom connectors. A detailed overview of what custom connectors can found at [this link](https://docs.microsoft.com/en-us/connectors/custom-connectors/).
+In order to install these connectors to your environment, you will need sufficient permissions to create and publish custom connectors. A detailed overview of what custom connectors are, can found at [this link](https://docs.microsoft.com/en-us/connectors/custom-connectors/).
 
 ## Steps to follow
 
